@@ -1,0 +1,110 @@
+select 
+*
+from aw_store.sales
+
+;
+select 
+COUNT(CustomerKey)
+from aw_store.customers
+;
+select
+    OrderDate,
+    YEAR(OrderDate) as Year_
+from
+    aw_store.sales;
+    
+select
+DISTINCT YEAR(orderdate) as year_
+FROM aw_store.sales;
+
+
+select 
+YEAR(orderdate) as year_,
+sum(orderQuantity) as Total_Quantity
+from aw_store.sales
+group BY
+year_
+;
+
+select 
+year(orderdate) as Year_2015,
+sum(orderQuantity) as total_quantity_2015
+from aw_store.sales
+where YEAR(orderdate) =2015
+group BY
+Year_2015
+;
+-- Select
+-- where
+-- group
+---having
+;
+
+select 
+*
+from aw_store.sales
+;
+
+-----Having;
+select
+    productkey,
+    count(productkey) as total
+from
+    aw_store.sales
+where
+    year(OrderDate) = 2015
+group by
+    productkey
+HAVING
+      count(productkey) >150
+order BY
+    total DESCselect
+    productkey,
+    count(productkey) as total
+from
+    aw_store.sales
+where
+    year(OrderDate) = 2015
+group by
+    productkey
+HAVING
+      count(productkey) >150
+order BY
+    total DESC
+ 
+;
+SELECT
+*,DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(),BirthDate)), '%Y') + 0 AS age
+   -- count(CustomerKey)
+
+from aw_store.customers
+where DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(),BirthDate)), '%Y') + 0 >  60
+and MaritalStatus = 'S'
+order BY
+age DESC
+LIMIT 20
+
+;
+-- SELECT
+ --   a.totalchildren,
+ --   COUNT(a.full_name)
+-- from
+
+  (      SELECT
+            concat (c.FirstName, " ", c.LastName) as full_name,
+            c.EmailAddress,
+            c.TotalChildren
+        from
+            aw_store.customers as c
+        where
+            -- c.TotalChildren = 3
+            -- or c.TotalChildren = 5
+            -- and c.TotalChildren <> 5
+            c.TotalChildren in (3, 4, 5)
+);
+    -- as a
+-- GROUP by
+    -- a.totalchildren
+    ;
+
+
