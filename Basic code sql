@@ -1,3 +1,91 @@
+-- SQL CREATE A TABLE
+create table b10. user(
+	user_id int, 
+    first_name varchar(65),
+    last_name varchar(65),
+    phone varchar (20),
+    dod date ,
+    address varchar(236)
+)
+;
+-- read table
+select 
+*
+from b10.user
+;
+
+--  Insert Data 
+
+insert into b10.user(user_id,first_name,last_name,phone,dod,address)
+values(1,"Nahidul","Islam",'01305385253','2004-04-27',"Dhaka,Narsingdi")
+;
+insert into b10.user(user_id,first_name,last_name,phone,dod,address)
+values(2,"Pranto","Prodan","01960522951",'2003-01-27',"Dhaka,Narsingdi")
+;
+
+insert into b10.user(user_id,first_name,last_name,phone,dod)
+values(3,"Abir","Fakir","0174553659",'2008-02-01')
+;
+
+
+select
+*
+from b10.user
+;
+
+-- Update table
+
+update b10.user 
+set address ="narsigndi"
+where user_id =3
+;
+
+-- Delete table
+delete 
+from b10.user
+where user_id =2
+;
+
+-- alter table / add column
+alter table b10.user
+add email varchar(255)
+;
+select 
+*
+from b10.user
+;
+
+update b10.user
+set email ="nahiul121274@gmail,com"
+where user_id =1
+;
+
+-- Delete column
+
+alter table b10.user
+drop column email
+;
+
+select
+*
+from b10.user
+where address <> ''
+;
+select
+*
+from b10.user
+;
+select*from new_schema.user;
+
+truncate new_schema.user;
+
+select*from new_schema.user;
+
+drop table new_schema.user;
+
+
+
+
 select 
 *
 from aw_store.sales
